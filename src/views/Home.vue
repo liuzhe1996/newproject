@@ -18,7 +18,7 @@
       <div>数字的10倍是{{ total }}</div>
     </div>
     <div>{{ school }}在校人数{{ number }}人</div>
-    <div>学校第一名是{{personName}}</div>
+    <div>学校第一名是{{ personName }}</div>
   </div>
 </template>
 
@@ -48,13 +48,16 @@ export default {
     ...mapGetters("countAbout", { total: "tenCount" }),
   },
   methods: {
-    ...mapMutations('countAbout',{add:"addCount"}),
+    ...mapMutations("countAbout", { add: "addCount" }),
     sub() {
       this.$store.commit("countAbout/subCount", 1);
     },
     gotoAbout() {
       this.$router.push({
-        path: "./About",
+        name: "About",
+        params: {
+          title: "about",
+        },
       });
     },
   },
